@@ -25,7 +25,8 @@
   }
 </style>
         <h1>Welcome to the IT College Room Booking System</h1>
-        <p>Your one-stop solution for managing room bookings at IT College. Easily register, log in, and manage your bookings with our user-friendly interface.</p>
+        <p>Your one-stop solution for managing room bookings at IT College.<br>
+         Easily register, log in, and manage your bookings with our user-friendly interface.</p>
         
         <button class="secondary"><a href="register.php" class="btn">Register</a></button>
         <button class="contrast"><a href="login.php" class="btn">Login</a></button>
