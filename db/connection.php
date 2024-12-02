@@ -3,7 +3,4 @@
     if(!$conn){
         die('error'.myaqli_connect_error());
     }
-    else{
-        echo 'good';
-    }
 ?>
