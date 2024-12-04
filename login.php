@@ -31,9 +31,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pico-main/css/pico.min.css">
     <title>User Login</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+
+        fieldset {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px white;
+            width: 300px; 
+        }
+
+        h1 {
+            text-align: center;  
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1   style="text-align: center;" >Login</h1>
+<h1 >Login</h1>
 <fieldset class="grid">
     <form action="login.php" method="POST">
         <input type="email" name="email" placeholder="Email" required>
