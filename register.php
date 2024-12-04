@@ -65,10 +65,31 @@ if (preg_match($regex, $email)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pico-main/css/pico.min.css">
     <title>User Registration</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+
+        fieldset {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px white;
+            width: 600px; 
+        }
+
+        h1 {
+            text-align: center;  
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-
     <h1>Register</h1>
+    <fieldset class="grid">
     <form action="register.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -81,6 +102,6 @@ if (preg_match($regex, $email)) {
         <input type="file" name="profile_picture">
         <button type="submit">Register</button>
     </form>
-
+    </fieldset>
 </body>
 </html>
