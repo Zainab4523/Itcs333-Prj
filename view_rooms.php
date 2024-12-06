@@ -14,6 +14,7 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pico-main/css/pico.min.css">
     <title>Room Browsing</title>
 </head>
 <body>
