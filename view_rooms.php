@@ -18,6 +18,7 @@ if (!$result) {
 </head>
 <body>
     <h1>Rooms</h1>
+    <a href="profile.php">Profile</a>
     <ul>
         <?php
         while ($room = mysqli_fetch_assoc($result)) {

@@ -65,9 +65,11 @@ $profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profil
         </select>
         <input type="file" name="profile_picture">
         <button type="submit">Update Profile</button>
+        <a href="view_rooms.php">Return back to view rooms!</a>
         <div role="button" tabindex="0" style="background-color:white;">
         <a href="logout.php" >Logout</a>
         </div>
+
     </form>
 </fieldset>
 

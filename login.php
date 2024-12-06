@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['email'] = $email;
-        // Redirect to the profile page upon successful login
-        header("Location: profile.php");
+        // open view rooms 
+        header("Location: view_rooms.php");
         exit();
     } else {
         echo "Invalid email or password!";
