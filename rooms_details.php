@@ -38,6 +38,7 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pico-main/css/pico.min.css">
+    
     <title>Room Details</title>
 </head>
 <body>
