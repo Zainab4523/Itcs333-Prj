@@ -20,17 +20,27 @@ if (!$result) {
 <body>
     <h1>Rooms</h1>
     <a href="profile.php">Profile</a>
-    <ul>
-        <?php
-        while ($room = mysqli_fetch_assoc($result)) {
-            echo '<li>';
-            echo '<h2>' . $room['name'] . '</h2>';
-            echo '<p>Capacity: ' . $room['capacity'] . '</p>';
-            echo '<p>Equipment: ' . (!empty($room['equipment']) ? $room['equipment'] : 'None') . '</p>';
-            echo '<a href="rooms_details.php?id=' . $room['room_id'] . '">View Details</a>';
-            echo '</li>';
-        }
-        ?>
-    </ul>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Equipment</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($room = mysqli_fetch_assoc($result)) {
+                echo '<tr>';
+                echo '<td>' . htmlspecialchars($room['name']) . '</td>';
+                echo '<td>' . htmlspecialchars($room['capacity']) . '</td>';
+                echo '<td>' . (!empty($room['equipment']) ? htmlspecialchars($room['equipment']) : 'None') . '</td>';
+                echo '<td><a href="room_details.php?id=' . $room['room_id'] . '">View Details</a></td>';
+                echo '</tr>';
+            }
+            ?>
+        </tbody>
+        </table>
 </body>
 </html>
