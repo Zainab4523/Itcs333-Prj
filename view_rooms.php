@@ -18,7 +18,7 @@ if (!$result) {
     <title>Room Browsing</title>
 </head>
 <body>
-    <h1>Rooms</h1>
+    <h1 style="text-align:center;">Rooms</h1>
     <table class="striped">
         <thead>
             <tr>
