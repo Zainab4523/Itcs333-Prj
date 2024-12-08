@@ -41,7 +41,7 @@ if (!$result) {
             ?>
         </tbody>
         </table> 
-        <button>
+        <button style="background-color:gray;">
         <a href="profile.php">Profile</a>
         </button>
        

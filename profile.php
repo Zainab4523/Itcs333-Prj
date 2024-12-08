@@ -47,7 +47,6 @@ $profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profil
             box-shadow: 0 2px 10px white;
             width: 600px;            
         }
-
     </style>
 </head>
 <body>
@@ -65,11 +64,11 @@ $profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profil
         </select>
         <input type="file" name="profile_picture">
         <button type="submit">Update Profile</button>
-        <a href="view_rooms.php">Return back to view rooms!</a>
+
         <div role="button" tabindex="0" style="background-color:white;">
         <a href="logout.php" >Logout</a>
         </div>
-
+        <a href="view_rooms.php" >Return back to view rooms!</a>
     </form>
 </fieldset>
 
