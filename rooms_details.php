@@ -37,6 +37,7 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pico-main/css/pico.min.css">
     <title>Room Details</title>
 </head>
 <body>
@@ -83,6 +84,6 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
         }
         ?>
     </ul>
-    <a href="browse_rooms.php">Back to Room List</a>
+    <a href="view_rooms.php">Back to Room List</a>
 </body>
 </html>

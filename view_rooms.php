@@ -27,7 +27,7 @@ if (!$result) {
             echo '<h2>' . $room['name'] . '</h2>';
             echo '<p>Capacity: ' . $room['capacity'] . '</p>';
             echo '<p>Equipment: ' . (!empty($room['equipment']) ? $room['equipment'] : 'None') . '</p>';
-            echo '<a href="room_details.php?id=' . $room['room_id'] . '">View Details</a>';
+            echo '<a href="rooms_details.php?id=' . $room['room_id'] . '">View Details</a>';
             echo '</li>';
         }
         ?>
