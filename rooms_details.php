@@ -42,7 +42,7 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     <title>Room Details</title>
 </head>
 <body>
-    <h1><?php echo isset($room['name']) ? $room['name'] : 'Room Name Not Found'; ?></h1>
+    <h1 style="text-align:center;"><?php echo isset($room['name']) ? $room['name'] : 'Room Name Not Found'; ?></h1>
     <table>
     <tr>
         <th>Description</th>
