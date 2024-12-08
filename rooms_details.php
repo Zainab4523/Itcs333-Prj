@@ -38,50 +38,47 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pico-main/css/pico.min.css">
-
+    
     <title>Room Details</title>
 </head>
 <body>
     <h1 style="text-align:center;"><?php echo isset($room['name']) ? $room['name'] : 'Room Name Not Found'; ?></h1>
-    <table>
-    <tr>
-        <th>Description</th>
-        <td>
-            <?php 
-            if (!empty($room['description'])) {
-                echo htmlspecialchars($room['description']);
-            } else {
-                echo 'No description available.';
-            }
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <th>Capacity</th>
-        <td>
-            <?php 
-            if (!empty($room['capacity'])) {
-                echo htmlspecialchars($room['capacity']);
-            } else {
-                echo 'Not specified.';
-            }
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <th>Equipment</th>
-        <td>
-            <?php 
-            if (!empty($room['equipment'])) {
-                echo htmlspecialchars($room['equipment']);
-            } else {
-                echo 'None';
-            }
-            ?>
-        </td>
-    </tr>
-        </table>
+    <div class="grid">
+  <div>
+    <p><strong>Description:</strong> 
+    <?php 
+    if (!empty($room['description'])) {
+        echo $room['description'];
+    } else {
+        echo 'No description available.';
+    }
+    ?>
+    </p>
+    </div>
 
+  <div>
+    <p><strong>Capacity:</strong> 
+    <?php 
+    if (!empty($room['capacity'])) {
+        echo $room['capacity'];
+    } else {
+        echo 'Not specified.';
+    }
+    ?>
+    </p>
+    </div>
+    <div>
+    <p><strong>Equipment:</strong> 
+    <?php 
+    if (!empty($room['equipment'])) {
+        echo $room['equipment'];
+    } else {
+        echo 'None';
+    }
+    ?>
+    </p>
+    </div>
+    </div>
     <h2>Available Timeslots</h2>
     <ul>
         <?php
