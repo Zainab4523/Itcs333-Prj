@@ -19,7 +19,6 @@ if (!$result) {
 </head>
 <body>
     <h1>Rooms</h1>
-    <a href="profile.php">Profile</a>
     <table class="striped">
         <thead>
             <tr>
@@ -36,11 +35,15 @@ if (!$result) {
                 echo '<td>' . htmlspecialchars($room['name']) . '</td>';
                 echo '<td>' . htmlspecialchars($room['capacity']) . '</td>';
                 echo '<td>' . (!empty($room['equipment']) ? htmlspecialchars($room['equipment']) : 'None') . '</td>';
-                echo '<td><a href="room_details.php?id=' . $room['room_id'] . '">View Details</a></td>';
+                echo '<td><a href="rooms_details.php?id=' . $room['room_id'] . '">View Details</a></td>';
                 echo '</tr>';
             }
             ?>
         </tbody>
-        </table>
+        </table> 
+        <button>
+        <a href="profile.php">Profile</a>
+        </button>
+       
 </body>
 </html>
