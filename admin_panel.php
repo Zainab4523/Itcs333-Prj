@@ -36,7 +36,7 @@
         //Add Room Form
         <section>
             <h2>Add Room</h2>
-            <form action="manage_rooms.php" method="POST">
+            <form action="managing.php" method="POST">
                 <input type="hidden" name="action" value="add">
                 <label for="room_name">Room Name</label>
                 <input type="text" id="room_name" name="room_name" placeholder="Room Name" required>
@@ -75,12 +75,12 @@
                             <td>{$row['capacity']}</td>
                             <td>{$row['equipment']}</td>
                             <td>
-                                <form action='manage_rooms.php' method='POST' style='display:inline;'>
+                                <form action='managing.php' method='POST' style='display:inline;'>
                                     <input type='hidden' name='action' value='edit'>
                                     <input type='hidden' name='room_id' value='{$row['room_id']}'>
                                     <button type='submit'>Edit</button>
                                 </form>
-                                <form action='manage_rooms.php' method='POST' style='display:inline;'>
+                                <form action='managing.php' method='POST' style='display:inline;'>
                                     <input type='hidden' name='action' value='delete'>
                                     <input type='hidden' name='room_id' value='{$row['room_id']}'>
                                     <button type='submit' class='contrast'>Delete</button>

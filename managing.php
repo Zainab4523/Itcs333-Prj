@@ -1,5 +1,5 @@
 <?php
-require 'db_connection.php';
+require 'db/connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'];
 
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $capacity = $_POST['capacity'];
         $equipment = $_POST['equipment'];
 
-        $stmt = $conn->prepare("INSERT INTO rooms (room_name, capacity, equipment) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO rooms (name, capacity, equipment) VALUES (?, ?, ?)");
         $stmt->bind_param("sis", $room_name, $capacity, $equipment);
 
         if ($stmt->execute()) {
