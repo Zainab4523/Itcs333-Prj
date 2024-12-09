@@ -66,12 +66,12 @@
                 </thead>
                 <tbody>
                     <?php
-                    require 'db_connection.php';
+                    require 'db/connection.php';
                     $result = $conn->query("SELECT * FROM rooms");
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                             <td>{$row['room_id']}</td>
-                            <td>{$row['room_name']}</td>
+                            <td>{$row['name']}</td>
                             <td>{$row['capacity']}</td>
                             <td>{$row['equipment']}</td>
                             <td>
