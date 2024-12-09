@@ -6,6 +6,9 @@ include 'db/connection.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Initialize error message variable
+$error_message = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -29,33 +32,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
             move_uploaded_file($_FILES['profile_picture']['tmp_name'], $upload_dir . $profile_picture);
         } else {
-            die("File upload error: " . $_FILES['profile_picture']['error']);
+            $error_message = "File upload error: " . $_FILES['profile_picture']['error'];
         }
     }
 
-    // Prepare and execute SQL Insert
-    $sql = "INSERT INTO users (username, email, password, md5_pass, gender, birthday, profile_picture) 
-            VALUES ('$username', '$email', '$password', '$md5_pass', '$gender', '$birthday', '$profile_picture')";
-
-    // Debugging output
-    echo "Inserting User: Username: $username, Email: $email, Password: $md5_pass, Profile Picture: $profile_picture<br>";
-
-    if (!mysqli_query($conn, $sql)) {
-        echo "SQL Error: " . mysqli_error($conn);
+    // Email validation
+    $regex = '/@uob\.edu\.bh$/';
+    if (!preg_match($regex, $email)) {
+        $error_message = "Invalid email format. Please use the format: XXXXXX@uob.edu.bh";
     } else {
-        header("Location: login.php");
-        exit();
+        // Prepare and execute SQL Insert
+        $sql = "INSERT INTO users (username, email, password, md5_pass, gender, birthday, profile_picture) 
+                VALUES ('$username', '$email', '$password', '$md5_pass', '$gender', '$birthday', '$profile_picture')";
+
+        // Debugging output
+        echo "Inserting User: Username: $username, Email: $email, Password: $md5_pass, Profile Picture: $profile_picture<br>";
+
+        if (!mysqli_query($conn, $sql)) {
+            $error_message = "SQL Error: " . mysqli_error($conn);
+        } else {
+            header("Location: login.php");
+            exit();
+        }
     }
-
-
-    $email = "2020123@stu.uob.edu.bh";
-    $regex = '/^\d{7}@stu\.uob\.edu\.bh$/';
-
-if (preg_match($regex, $email)) {
-    echo "Valid email.";
-} else {
-    echo "Invalid email.";
-}
 }
 ?>
 <!DOCTYPE html>
@@ -85,23 +84,31 @@ if (preg_match($regex, $email)) {
             text-align: center;  
             margin-bottom: 20px;
         }
+
+        .error {
+            color: red; /* Style for error message */
+            margin-bottom: 15px; /* Space below the message */
+        }
     </style>
 </head>
 <body>
     <h1>Register</h1>
     <fieldset class="grid">
-    <form action="register.php" method="POST" enctype="multipart/form-data">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="date" name="birthday" required>
-        <select name="gender" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <input type="file" name="profile_picture">
-        <button type="submit">Register</button>
-    </form>
+        <?php if ($error_message): ?>
+            <p class="error"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+        <form action="register.php" method="POST" enctype="multipart/form-data">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="date" name="birthday" required>
+            <select name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="file" name="profile_picture">
+            <button type="submit">Register</button>
+        </form>
     </fieldset>
 </body>
 </html>
