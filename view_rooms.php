@@ -2,7 +2,7 @@
 session_start();
 include 'db/connection.php';
 
-// Check if user is logged in
+// check the user info 
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
@@ -13,15 +13,15 @@ $sql = "SELECT * FROM users WHERE email='$email'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
-$profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profile_picture'] : "uploads/no_picture.png"; // Default picture path
-
+$profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profile_picture'] : "uploads/no_picture.png"; 
 // Fetch all rooms
-$sql_rooms = "SELECT * FROM rooms";
-$result_rooms = mysqli_query($conn, $sql_rooms);
+$sql = "SELECT * FROM rooms";
+$result = mysqli_query($conn, $sql);
 
-if (!$result_rooms) {
+if (!$result) {
     die("Database query failed: " . mysqli_error($conn));
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +30,28 @@ if (!$result_rooms) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pico-main/css/pico.min.css">
     <title>Room Browsing</title>
+    <style>
+        nav {
+            background-color: #080F2D; 
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-align: center; 
+            display: flex; 
+            align-items: center;
+        }
+        
+
+    </style>
+
 </head>
 <body>
-    <div style="text-align: center; margin-bottom: 20px;">
-    <h2><a href="profile.php" style="text-decoration: none; color: inherit;">Your Profile</a></h2>
-        <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;">
+    <nav style="text-align: center; margin-bottom: 20px;">
+        <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
+        <h2><a href="profile.php" style="text-decoration: none; color: inherit;">Go to Your Profile</a></h2>
         <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-    </div>
+    </nav>
 
     <h1 style="text-align:center;">Rooms</h1>
     <table class="striped">
@@ -51,7 +65,7 @@ if (!$result_rooms) {
         </thead>
         <tbody>
             <?php
-            while ($room = mysqli_fetch_assoc($result_rooms)) {
+            while ($room = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td>' . htmlspecialchars($room['name']) . '</td>';
                 echo '<td>' . htmlspecialchars($room['capacity']) . '</td>';
@@ -61,12 +75,14 @@ if (!$result_rooms) {
             }
             ?>
         </tbody>
-    </table>
+        </table> 
 
-    <div style="text-align: center; margin-top: 20px;">
+
+        <div style="text-align: center; margin-top: 20px;">
         <a href="booking_interface.php" style="padding: 10px 20px; background-color: #1843ad; color: white; text-decoration: none; border-radius: 5px;">
             Your Bookings
         </a>
-    </div>
+        </div>
+
 </body>
 </html>
