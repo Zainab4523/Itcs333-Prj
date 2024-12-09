@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //add room
     if ($action === 'add') {
         $room_name = $_POST['room_name'];
+        
         $capacity = $_POST['capacity'];
         $equipment = $_POST['equipment'];
 
