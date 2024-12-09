@@ -33,23 +33,22 @@ if (!$result) {
     <style>
         nav {
             background-color: #080F2D; 
-            padding: 15px;
+            padding: 10px;
             border-radius: 20px;
             margin-bottom: 20px;
             text-align: center; 
             display: flex; 
             align-items: center;
         }
-        
 
     </style>
 
 </head>
 <body>
-    <nav style="text-align: center; margin-bottom: 20px;">
+    <nav>
         <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
-        <h2><a href="profile.php" style="text-decoration: none; color: inherit;">Go to Your Profile</a></h2>
-        <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
+        <h3><strong>Hello</strong> <?php echo htmlspecialchars($user['username']); ?> <strong>!</strong> </h3>
+       <p>  Access Your Profile  <a href="profile.php" class="contrast">from here</a></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
     </nav>
 
