@@ -35,7 +35,6 @@
         
         <button class="secondary"><a href="register.php" class="btn">Register</a></button>
         <button class="contrast"><a href="login.php" class="btn">Login</a></button>
-        <button class="contrast"><a href="admin_panel.php" class="btn">Admin login</a></button>
         
         <section class="features">
             <h2>Features</h2>

@@ -37,10 +37,14 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pico-main/css/pico.min.css">
+    
     <title>Room Details</title>
 </head>
 <body>
-    <h1><?php echo isset($room['name']) ? $room['name'] : 'Room Name Not Found'; ?></h1>
+    <h1 style="text-align:center;"><?php echo isset($room['name']) ? $room['name'] : 'Room Name Not Found'; ?></h1>
+    <div class="grid">
+  <div>
     <p><strong>Description:</strong> 
     <?php 
     if (!empty($room['description'])) {
@@ -50,7 +54,9 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     }
     ?>
     </p>
+    </div>
 
+  <div>
     <p><strong>Capacity:</strong> 
     <?php 
     if (!empty($room['capacity'])) {
@@ -60,7 +66,8 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     }
     ?>
     </p>
-
+    </div>
+    <div>
     <p><strong>Equipment:</strong> 
     <?php 
     if (!empty($room['equipment'])) {
@@ -70,7 +77,8 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
     }
     ?>
     </p>
-
+    </div>
+    </div>
     <h2>Available Timeslots</h2>
     <ul>
         <?php
@@ -83,6 +91,6 @@ $result_timeslots = mysqli_stmt_get_result($stmt);
         }
         ?>
     </ul>
-    <a href="browse_rooms.php">Back to Room List</a>
+    <a href="view_rooms.php">Back to Room List</a>
 </body>
 </html>
