@@ -48,8 +48,9 @@ if (!$result) {
     <nav>
         <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
         <h3><strong>Hello</strong> <?php echo htmlspecialchars($user['username']); ?> <strong>!</strong> </h3>
-       <p>  Access Your Profile  <a href="profile.php" class="contrast">from here</a></p>
-        <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+        <p><strong>Your Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+        <p>  Access Your Profile  <a href="profile.php" class="contrast">from here!</a></p>
+ 
     </nav>
 
     <h1 style="text-align:center;">Rooms</h1>
