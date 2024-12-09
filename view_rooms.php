@@ -40,7 +40,9 @@ if (!$result) {
             display: flex; 
             align-items: center;
         }
-
+        body{
+            --pico-font-family: Pacifico, cursive;
+        }
     </style>
 
 </head>
