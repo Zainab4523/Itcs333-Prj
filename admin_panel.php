@@ -33,7 +33,7 @@
     <main class="container">
         <h1>Admin Panel</h1>
 
-        //Add Room Form
+        <!--Add Room Form -->
         <section>
             <h2>Add Room</h2>
             <form action="managing.php" method="POST">
@@ -51,7 +51,7 @@
             </form>
         </section>
 
-        //Manage Rooms
+        <!--Manage Rooms -->
         <section>
             <h2>Manage Rooms</h2>
             <table>
