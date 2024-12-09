@@ -48,5 +48,9 @@
             </ul>
         </section>
     </div>
+
+    <footer>
+        <p>&copy; 2024 IT College Room Booking System </p>
+    </footer>
 </body>
 </html>
