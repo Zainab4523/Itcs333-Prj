@@ -41,9 +41,16 @@ if (!$result) {
             ?>
         </tbody>
         </table> 
+
         <button style="background-color:gray;">
         <a href="profile.php">Profile</a>
         </button>
+
+        <div style="text-align: center; margin-top: 20px;">
+        <a href="booking_interface.php" style="padding: 10px 20px; background-color: #1843ad; color: white; text-decoration: none; border-radius: 5px;">
+            Your Bookings
+        </a>
+        </div>
        
 </body>
 </html>
