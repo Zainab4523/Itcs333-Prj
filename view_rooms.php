@@ -1,11 +1,25 @@
 <?php
+session_start();
 include 'db/connection.php';
 
-// Fetch all rooms
-$sql = "SELECT * FROM rooms";
-$result = mysqli_query($conn, $sql);
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
 
-if (!$result) {
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($result);
+
+$profile_picture = !empty($user['profile_picture']) ? "uploads/" . $user['profile_picture'] : "uploads/no_picture.png"; // Default picture path
+
+// Fetch all rooms
+$sql_rooms = "SELECT * FROM rooms";
+$result_rooms = mysqli_query($conn, $sql_rooms);
+
+if (!$result_rooms) {
     die("Database query failed: " . mysqli_error($conn));
 }
 ?>
@@ -18,6 +32,13 @@ if (!$result) {
     <title>Room Browsing</title>
 </head>
 <body>
+    <div style="text-align: center; margin-bottom: 20px;">
+    <h2><a href="profile.php" style="text-decoration: none; color: inherit;">Your Profile</a></h2>
+        <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;">
+        <p><strong>Username:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
+        <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+    </div>
+
     <h1 style="text-align:center;">Rooms</h1>
     <table class="striped">
         <thead>
@@ -30,7 +51,7 @@ if (!$result) {
         </thead>
         <tbody>
             <?php
-            while ($room = mysqli_fetch_assoc($result)) {
+            while ($room = mysqli_fetch_assoc($result_rooms)) {
                 echo '<tr>';
                 echo '<td>' . htmlspecialchars($room['name']) . '</td>';
                 echo '<td>' . htmlspecialchars($room['capacity']) . '</td>';
@@ -40,17 +61,12 @@ if (!$result) {
             }
             ?>
         </tbody>
-        </table> 
+    </table>
 
-        <button style="background-color:gray;">
-        <a href="profile.php">Profile</a>
-        </button>
-
-        <div style="text-align: center; margin-top: 20px;">
+    <div style="text-align: center; margin-top: 20px;">
         <a href="booking_interface.php" style="padding: 10px 20px; background-color: #1843ad; color: white; text-decoration: none; border-radius: 5px;">
             Your Bookings
         </a>
-        </div>
-
+    </div>
 </body>
 </html>
