@@ -51,6 +51,6 @@ if (!$result) {
             Your Bookings
         </a>
         </div>
-       
+
 </body>
 </html>
