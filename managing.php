@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $capacity = $_POST['capacity'];
         $equipment = $_POST['equipment'];
 
-        $stmt = $conn->prepare("UPDATE rooms SET room_name = ?, capacity = ?, equipment = ? WHERE room_id = ?");
+        $stmt = $conn->prepare("UPDATE rooms SET name = ?, capacity = ?, equipment = ? WHERE room_id = ?");
         $stmt->bind_param("sisi", $room_name, $capacity, $equipment, $room_id);
 
         if ($stmt->execute()) {
